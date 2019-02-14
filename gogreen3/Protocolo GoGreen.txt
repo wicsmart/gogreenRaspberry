@@ -1,0 +1,49 @@
+
+
+# -----Protocolo GoGreen de Comunicação para Radio UbeeMax --------
+
+
+Byte	Medida		Comando		Status		Setup
+--------------------------------------------------------------------
+0	*		*		*		S
+1	+/-		C		E		TempSp
+2	Temp		Ação1		Status1		TempSp
+3	Temp		-		Status2		TempSp
+4	Temp		-		TempSp		TempInf
+5	Temp		-		TempSp		TempInf
+6	Umid		-		TempSp		TempInf
+7	Umid		-		TempInf		-
+8	Umid		-		TempInf		-
+9	Umid		-		TempInf		-
+10	Bateria		Manual  	Manual	        -
+11	Bateria		Local		Local		-
+12	Bateria		-		-		-
+13	End		End		End		End
+14	End		End		End		End
+15	End		End		End		End
+16	#		#		#		#
+---------------------------------------------------------------------
+
+#-----Glossário
+
+
+End = 001: SensorOut
+End = 230: SensorIn
+
+Ação = 0: recolher
+Ação = 1: estender
+
+Status = 0: recolhida
+Status = 1: estendida
+Status = 2: transição
+Status = 3: indefinido
+
+Autom = 1
+Manual = 0
+
+Remoto=1
+Local=0
+----------------------------------------------------------------------
+
+
+

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Monitoramento e Controle remoto de sua estufa">
+	  <meta name="keywords" content="estufa, monitoramento, controle">
+    <title>GoGreen Solutions | Welcome</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+  </head>
+  <body>
+    <header>
+
+      <div class="container">
+        <div id="branding">
+           <img src="{% static 'img/Group_5.png' %}">
+
+        </div>
+        <nav>
+          <ul>
+            <li class="current"><a href="/">Início</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#boxes">Produtos e Serviços</a></li>
+			<li><a href="#contact">Contatos</a></li>
+			<li><a href="/cliente/">Área do cliente</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="showcase">
+      <div class="container">
+        <h1>EFICIÊNCIA NO SEU CULTIVO</h1>
+        <p>SAIBA O QUE ACONTECE EM SUAS ESTUFAS, E OBTENHA ANÁLISES E INFORMAÇÕES QUE VÃO TE AJUDAR A MELHORAR SUA PRODUÇÃO E A DIMINUIR OS CUSTOS!</p>
+      </div>
+    </section>
+
+
+    <section id="about">
+      <div class="container">
+        <article id="main-col">
+          <h1 class="page-title">SOBRE</h1>
+          <p>
+            A <b>GOGREEN</b> acredita na aplicação de uma agricultura em ambientes protegidos de forma precisa e inteligente visando o aumento da produtividade e a diminuição de gastos com recursos como água e energia. Assim como a consolidação do conceito de propriedade tecnológica, limpa e autossustentável.
+          </p>
+          <p>Dessa maneira, a <b>GOGREEN</b> trará para o produtor:</p>
+          <b>+Segurança:</b> O produtor terá a tranquilidade em saber tudo o que acontece na sua estufa em tempo real podendo tomar as decisões da forma correta.<br>
+	  <b>+Economia:</b> O controle das variáveis de uma estufa reduz o uso de defensivos, além de fazer o uso dos recursos na medida certa como energia e água.<br>
+	  <b>+Meio Ambiente:</b> A utilização do uso dos recursos naturais de maneira correta e precisa, tornando a propriedade mais eficaz e autossustentável.<br>
+	  <b>+Eficiência:</b> A otimização dos processos de cultivo em estufas traz o aumento de produtividade e visa a eficiência e maximização dos lucros.<br>
+
+        </article>
+
+        <aside id="sidebar">
+          <div class="dark">
+            <h3>Objetivo</h3>
+            <p>A proposta da empresa é simplificar ao máximo o gerenciamento destes ambientes, através de um software de gerenciamento que capta as informações em tempo real e os disponibiliza no aplicativo para smartphones com iOS ou Android.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+	<hr>
+
+    <section id="boxes">
+      <div class="container">
+        <h1 class="page-title">PRODUTOS E SERVIÇOS</h1>
+        <div class="box">
+          <img src="{% static 'img/automation.png' %}">
+          <h3>AUTOMAÇÃO</h3>
+          <p>Disponibiliza uma variedade de produtos e sistemas fornecendo soluções completas que compreendem os principais recursos tecnológicos dos setores agrícolas. </p>
+        </div>
+        <div class="box">
+          <img src="{% static 'img/solar-panel.png' %}">
+          <h3>ENERGIA</h3>
+          <p>A GoGreen conta com uma equipe de análise econômica, projeto e implementação de sistemas em geração de energia solar.</p>
+        </div>
+        <div class="box">
+          <img src="{% static 'img/maintenance.png' %}">
+          <h3>MANUTENÇÃO</h3>
+          <p>Oferece serviços de manutenção nos diversos sistemas voltados para sistemas agrícolas em estufas, desde troca de equipamentos à reparos de sistemas com mal funcionamento.</p>
+        </div>
+        <div class="box_1">
+          <img src="{% static 'img/analytics.png' %}">
+          <h3>SUPERVISÃO E GESTÃO</h3>
+          <p>Um novo conceito em sistemas de supervisão e gestão de empreendimentos agrícolas, o Guardiano Software®. Este produto disponibiliza ao produtor uma visão em tempo real de todos os empreendimentos que o cliente possuir. Todos os parâmetros e funcionalidades são personalizadas para atender da melhor forma cada propriedade.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <hr>
+
+    <section id="contact">
+      <div class="container">
+        <article id="main-col">
+          <h1 class="page-title">CONTATOS</h1>
+          <ul id="services">
+            <li>
+              <p><b>ESTEVÃO BORGES - Especialista em Hardware</b><br>
+	            +55 35 9123-1304<br>
+	            estevaogogreen@gmail.com</p>
+
+              <p><b>LUÍS FELIPE LEITE - CEO</b><br>
+		    +55 11 99450-3322<br>
+		    luisfelipegoreen@gmail.com</p>
+
+              <p><b>RENAN DE FAVERI - CPO</b><br>
+		    +55 11 97696-5701<br>
+		    renangogreen@gmail.com</p>
+
+	      <p><b>WICTOR S. MARTINS - CTO</b><br>
+		   +55 12 98199-9552<br>
+		   wictorgogreen@gmail.com</p>
+
+            </li>
+          </ul>
+        </article>
+       </div>
+      </section>
+
+	<aside id="sidebar">
+          <div class="dark">
+            <h3>Entre em contato conosco</h3>
+            <form class="quote">
+  						<div>
+  							<label>Nome</label><br>
+  							<input type="text" placeholder="Nome">
+  						</div>
+  						<div>
+  							<label>E-mail</label><br>
+  							<input type="email" placeholder="Endereço de e-mail">
+  						</div>
+						<div>
+  							<label>Assunto</label><br>
+  							<input type="text" placeholder="Assunto">
+  						</div>
+  						<div>
+  							<label>Mensagem</label><br>
+  							<textarea placeholder="Mensagem"></textarea>
+  						</div>
+  						<button class="button_1" type="submit">Enviar</button>
+					</form>
+          </div>
+        </aside>
+
+
+	<br><br><br>
+    <footer>
+    <!--  <a href="" target="_blank"><img border="0" src="./img/facebook.png" id="logo" /></a> -->
+      <a href="http://www.linkedin.com/company/gogreen-solutions" target="_blank"><img border="0" src="{% static 'img/linkedin.png' %}" id="logo" /></a>
+      <a href="http://www.instagram.com" target="_blank"><img border="0" src="{% static 'img/instagram.png' %}" id="logo" /></a>
+      <a href="http://www.youtube.com/channel/UCBzf6Zy82vDoM5n7ZHNah9Q" target="_blank"><img border="0" src="{% static 'img/youtube.png' %}" id="logo" /></a>
+      <p>Gogreen Solutions, Copyright &copy; 2018</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Monitoramento e Controle remoto de sua estufa">
+	  <meta name="keywords" content="estufa, monitoramento, controle">
+    <title>GoGreen Solutions | Welcome</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+  </head>
+  <body>
+    <header>
+
+      <div class="container">
+        <div id="branding">
+           <img src="{% static 'img/Group_5.png' %}">
+
+        </div>
+        <nav>
+          <ul>
+            <li class="current"><a href="/">Início</a></li>
+            <li><a href="/">Sobre</a></li>
+            <li><a href="/">Produtos e Serviços</a></li>
+			<li><a href="/">Contatos</a></li>
+			<li><a href="/cliente/">Área do cliente</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+
+
+ <div id="content-container" class="container p-none">
+        <div class="lgn-container col-lg-8">
+            <form id="login-form" method="post"
+                  action="{% url 'django.contrib.auth.views.login' %}">
+                {% csrf_token %}
+                <table class="table">
+                    <tr>
+                        <td><label for="id_username">Username</label></td>
+                        <td><input id="id_username" name="username"
+                                   type="text" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="id_password">Password</label></td>
+                        <td><input id="id_password" name="password"
+                                   type="password" class="form-control"></td>
+                    </tr>
+                </table>
+                {% if form.errors %}
+                    <p class=" label label-danger">
+                        Your username and password didn't match.
+                        Please try again.
+                    </p>
+                {% endif %}
+
+                <input type="submit" value="Login"
+                       class="btn btn-primary pull-right" />
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+        </div>
+    </div>
+
+ <footer>
+    <!--  <a href="" target="_blank"><img border="0" src="./img/facebook.png" id="logo" /></a> -->
+      <a href="http://www.linkedin.com/company/gogreen-solutions" target="_blank"><img border="0" src="{% static 'img/linkedin.png' %}" id="logo" /></a>
+      <a href="http://www.instagram.com" target="_blank"><img border="0" src="{% static 'img/instagram.png' %}" id="logo" /></a>
+      <a href="http://www.youtube.com/channel/UCBzf6Zy82vDoM5n7ZHNah9Q" target="_blank"><img border="0" src="{% static 'img/youtube.png' %}" id="logo" /></a>
+      <p>Gogreen Solutions, Copyright &copy; 2018</p>
+    </footer>
+  </body>
+</html>

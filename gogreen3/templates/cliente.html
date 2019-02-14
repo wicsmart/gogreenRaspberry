@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+{% load static %}
+<html xmlns="http://www.w3.org/1999/html">
+	<head>
+  <meta charset="utf-8">
+  <title>GoGreen Solutions</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  
+<head>
+  <meta charset="utf-8">
+  <title>GoGreen Solutions</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  
+  <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+  <link href="{% static 'css/twitterbootstrap.min.css'  %}" rel="stylesheet" type="text/css" />
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+ 
+  <link href="{% static 'css/bootstrap-toggle.min.css' %}" rel="stylesheet" type="text/css" />
+  
+  <script type="text/javascript" src="{% static 'js/bootstrap-toggle.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap-switch.js' %}"></script>
+   
+  <script type="text/javascript" src="{% static 'js/code/highstock.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/code/highcharts-more.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/code/modules/exporting.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/mqttws31.js' %}"></script>
+  
+  <script type="text/javascript" src="{% static 'js/formValidation.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/framework_bootstrap.min.js' %}"></script>
+  
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+  
+ <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+  
+  
+</head>
+<body class="keen-dashboard" style="padding-top: 80px;">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="/cliente/"><span class="glyphicon glyphicon-home" style="color:white"></span>    HOME</a></li>
+          <li><a href="#controles">CONTROLES</a></li> <!--================ALTERADO PARA LINKS=============-->
+          <li><a href="#graficos">GRÁFICOS</a></li><!--================ALTERADO PARA LINKS=============-->
+          <li><a href="#logs">LOGS</a></li><!--================ALTERADO PARA LINKS=============-->
+        </ul>
+        <img align="right" height="50px" width="144.9px" src="{% static 'img/Group_4.png' %}"/>
+      </div>
+    </div>
+  </div>
+  
+  
+<div class="container-aluminet" id="controles">
+  <div class="row"> 
+    <div class="panel-group">
+  
+  <div class="panel panel-default">
+        <div class="panel-heading" id="rem_auto"><h2 style="float: center" align="center" ><span class="glyphicon glyphicon-refresh" style="color:green"></span>ATUAÇÃO</h2>
+        </div>
+          <div class="panel-body" id="comandos">          
+            <div class="col-sm-4" align="center">
+              <h4 style="float: center" id="auto_man">AUTOMÁTICO</h4>
+               <button id="auto" type="button" class="btn btn-success active" onclick="ativar_auto()">Automático</button>
+               <button id="man" type="button" class="btn btn-success active" onclick="ativar_man()">Manual</button>
+     <!---         <input id="automan" type="checkbox" checked data-toggle="toggle" data-on="AUTOMÁTICO" data-off="MANUAL" data-onstyle="success" data-offstyle="danger" data-size="large"> 
+     -->
+			
+            </div>
+<!---
+            <div class="col-sm-4 mostra" align="center">
+              <h4 style="float: center">LOCAL/REMOTO</h4>
+              <input id="localrem" type="checkbox" checked data-toggle="toggle" data-on="LOCAL" data-off="REMOTO" data-onstyle="success" data-offstyle="danger" data-size="large">
+            </div>
+-->
+			<div class="col-sm-4 aguardar" align="center">
+              <h4 style="float: center">Aguardando permissão ... </h4>
+            </div>
+            <div class="col-sm-4 mostra" align="center">
+              <h4 style="float: center">ESTENDER/RECOLHER ALUMINET</h4>
+              <button id="abrir" type="button" class="btn btn-success active" onclick="open_aluminet()">RECOLHER</button>
+              <button id="fechar" type="button" class="btn btn-success active" onclick="close_aluminet()">ESTENDER</button>
+            </div>
+
+          </div>
+      </div>
+  
+  <div class="panel panel-default" id="limites">
+      <div class="panel-heading"><h2 style="float: center" align="center">LIMITES PARA AUTOMAÇÃO</h2>
+        </div>
+          <div class="panel-body">
+            <div class="col-sm-4" align="center">
+              <button id="liberar" type="button" class="btn btn-success active" align="center" onclick="enable_values()">LIBERAR ALTERAÇÃO DE VALORES</button>
+            </div>
+
+            <div class="col-sm-4" align="center">
+              <button id="alterar" type="submit" class="btn btn-success active" align="center" onclick="disable_values()">ALTERAÇÃO OK</button>
+            </div>
+            <div class="col-sm-4" align="center">
+              <button id="cancelar" type="button" class="btn btn-success active" align="center" onclick="cancel_values()">CANCELAR</button>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            
+           <form id="registrationForm" class="form-horizontal">
+              <div class="form-group">
+				  
+				 <div class="col-sm-4"  align="center">
+                  <h4 style="float: center"><span class="glyphicon glyphicon-dashboard" style="color:red"></span>TEMPERATURA(°C): LIMITE MÍNIMO</h4>
+                  <input id="min_temp" name="min_temperatura" type="number" class="form-control input-number" step="any" value="" required="" aria-required="true">
+                </div>
+                 
+                <div class="col-sm-4" align="center">
+                  <h4 style="float: center"><span class="glyphicon glyphicon-dashboard" style="color:red"></span>TEMPERATURA(°C): LIMITE MÁXIMO</h4>
+                  <input id="max_temp" name="max_temperatura" type="number" class="form-control input-number" step="any" value="" required="" aria-required="true">
+                </div>
+                
+              </div>
+            </form>
+          </div>
+      </div>
+  
+   <div class="panel panel-default">
+        <div class="panel-heading"><h2 style="float: center" align="center"><span class="glyphicon glyphicon-ok-circle" style="color:green"></span>STATUS ALUMINET</h2>
+        </div>
+          <div class="panel-body">          
+            <div class="col-sm-12">
+              <div id="alert_placeholder">
+              </div>
+              <!-- <div class="alert alert-success" align="center">        
+                <strong>ABERTA:</strong> Aluminet está aberta.      
+              </div> -->
+              <!-- <div class="alert alert-danger" align="center">        
+                <strong>FECHADA:</strong> Aluminet está fechada.
+              </div>
+              <div class="alert alert-warning" align="center">        
+                <strong>TRANSIÇÃO:</strong> Aluminet está fechando.
+              </div>
+              <div class="alert alert-warning" align="center">        
+                <strong>TRANSIÇÃO:</strong> Aluminet está abrindo.
+              </div> -->
+            </div>
+          </div>
+      </div>         
+  </div>
+          </div>
+      </div>
+  
+  
+   <div class="container-fluid" id="graficos">
+  <div class="panel-group">
+    <div class="panel panel-default">
+		<!--HEADING-->
+		  <div class="panel-heading">
+			<div class="row">
+			  <div class="col-sm-6">
+				<h1 style="float: center">ESTUFA</h1>
+			  </div>
+			   <div class="col-sm-6">
+				<h1 style="float: center">AMBIENTE</h1>
+			  </div>
+			</div>
+		 </div>	
+		 
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+           <div class="panel panel-default">
+             <div class="panel-body">
+
+				  <div class="chart-title col-sm-6">
+					<h2 style="float: center" id = 'temperatura'></h2>
+				  </div>
+				   <div class="chart-title col-sm-6">
+					 <h2 style="float: center" id = 'umidade'></h2>
+				   </div>
+					<div class="chart-stage" id = 'd1'></div>
+               </div>
+           </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+           <div class="panel panel-default">
+             <div class="panel-body">
+				  <div class="chart-title col-sm-6">
+					<h2 style="float: center" id = 'temperaturaOut'></h2>
+				  </div>
+				  <div class="chart-title col-sm-6">
+					<h2 style="float: center" id = 'umidadeOut'></h2>
+				  </div>
+				  <div class="chart-stage" id = 'e1'></div>
+			 </div>
+          </div>
+        </div>
+      </div>
+     </div>
+     
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="panel panel-default">
+             <div class="panel-body">
+               <div class="chart-stage" id = 'd2'></div>
+             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-wrapper">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="chart-stage" id = 'e2'></div>
+              </div>
+            </div>
+          </div>
+      </div>
+      
+      
+      </div>
+    </div>
+</div>
+
+     <div class="row">
+      <div class="col-sm-12">
+        <div class="chart-wrapper">
+          <div class="panel panel-default">
+             <div class="panel-body">
+               <div class="chart-stage" id = 'e3'></div>
+             </div>
+          </div>
+        </div>
+      </div>
+     </div>
+      
+
+</div>
+</div>
+
+ <div class="container-fluid" id="logs">
+  <div class="panel-group col-sm-6 col-md-6">
+    <div class="panel panel-default">
+		<!--HEADING-->
+		  <div class="panel-heading">
+			<h1 style="float: center">HISTÓRICO DE EVENTOS</h1>
+			</div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <div class="chart-wrapper">
+       
+          <div class="chart-stage">
+			  <table id="tabelaLog" class="display" style="width:100%">
+				<thead>
+				<tr>
+					<th>Evento</th>
+					<th>Data</th>
+				</tr>
+				</thead>
+				<tbody></tbody>
+				<tfoot>
+				<tr>
+					<th>Evento</th>
+					<th>Data</th>
+				</tr>
+				</tfoot>
+			</table>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+     </div>
+   
+   
+<!--
+    <div class="row">
+      <div class="col-sm-6 col-md-3">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Cell Title
+          </div>
+          <div class="chart-stage"  id = 'chart-01'>
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Cell Title
+          </div>
+          <div class="chart-stage">
+            <img data-src="holder.js/100%x120/white">
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Cell Title
+          </div>
+          <div class="chart-stage">
+            <img data-src="holder.js/100%x120/white">
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Cell Title
+          </div>
+          <div class="chart-stage">
+            <img data-src="holder.js/100%x120/white">
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+    </div>
+  -->
+
+  </div>
+  
+
+  <div class="container-fluid">
+    <p class="small text-muted"></p>
+  </div>
+  
+  <script type="text/javascript" src="{% static 'js/mqtt_js.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/genChart.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/eventos.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/validator.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/controles.js' %}"></script>
+
+
+
+<script>
+  $.ajaxSetup({
+  headers: { "X-CSRFToken": '{{csrf_token}}' }
+});
+</script>
+</body>
+</html>

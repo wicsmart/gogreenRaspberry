@@ -1,0 +1,28 @@
+Para listar todos os processos que estão rodando, deve-se rodar os seguinte comando:
+
+ps -ef | grep python
+
+
+O processo gateway.py é responsável por ler a serial e enviar as medidas/status para o banco e atualizar a pagina
+
+O processo subcriber_local.py é responsável por receber os comandos do usuário e escrever na serial
+
+O porcesso manage.py runserver é o servidor local
+
+Para encerrar algun desses processos deve-se executar o seguint comando juntamente com ID correspondente:
+(ID é o primeiro numero, que está a frente da palavra 'pi')
+
+kill -9 <ID>
+
+
+Para visualizar as mensagens que o rádio está recebendo deve-se encerrar o processo gateway e executá-lo com o comando:
+
+python3 software2/gateway.py
+
+
+
+
+
+
+
+
